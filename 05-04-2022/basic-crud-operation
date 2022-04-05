@@ -1,1 +1,201 @@
 
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ sudo service mongodb start
+[sudo] password for hdoop: 
+Failed to start mongodb.service: Unit mongodb.service not found.
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ mongo
+MongoDB shell version v5.0.5
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("20f4cdf5-86ce-4dc0-9aed-c4b3b74ea607") }
+MongoDB server version: 5.0.5
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting: 
+        2022-04-05T08:51:30.937+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2022-04-05T08:51:33.044+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs;
+IS_415   0.000GB
+admin    0.000GB
+config   0.000GB
+fardeen  0.000GB
+is_TEJU  0.000GB
+ise140   0.000GB
+local    0.000GB
+namana   0.000GB
+sriya    0.000GB
+start    0.000GB
+> use shwetha152
+switched to db shwetha152
+> db
+shwetha152
+> show dbs
+IS_415   0.000GB
+admin    0.000GB
+config   0.000GB
+fardeen  0.000GB
+is_TEJU  0.000GB
+ise140   0.000GB
+local    0.000GB
+namana   0.000GB
+sriya    0.000GB
+start    0.000GB
+> db.createCollection("mycollection")
+{ "ok" : 1 }
+> db
+shwetha152
+> show collections
+mycollection
+> db.shwetha152.insertOne({name:"shwetha",marks:87})
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("624bbd41cc8fc22df10a893d")
+}
+> db.mycollection.find().pretty()
+> db.mycollection.find().pretty();
+> db.mycollection.find()
+> show dbs
+IS_415      0.000GB
+admin       0.000GB
+config      0.000GB
+fardeen     0.000GB
+is_TEJU     0.000GB
+ise140      0.000GB
+local       0.000GB
+namana      0.000GB
+shwetha152  0.000GB
+sriya       0.000GB
+start       0.000GB
+> db.mycollection.find()
+> db.mycollection.find({})
+> db.mycollection.insertMaNY([{name:"vidya",marks:90},{name:"anvi",marks:89},{name:"arpi",marks:95}])
+uncaught exception: TypeError: db.mycollection.insertMaNY is not a function :
+@(shell):1:1
+> db.mycollection.insertMany([{name:"vidya",marks:90},{name:"anvi",marks:89},{name:"arpi",marks:95}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("624bc02ecc8fc22df10a893e"),
+		ObjectId("624bc02ecc8fc22df10a893f"),
+		ObjectId("624bc02ecc8fc22df10a8940")
+	]
+}
+> db.mycollection.find()
+{ "_id" : ObjectId("624bc02ecc8fc22df10a893e"), "name" : "vidya", "marks" : 90 }
+{ "_id" : ObjectId("624bc02ecc8fc22df10a893f"), "name" : "anvi", "marks" : 89 }
+{ "_id" : ObjectId("624bc02ecc8fc22df10a8940"), "name" : "arpi", "marks" : 95 }
+> db.mycollection.fin({})
+uncaught exception: TypeError: db.mycollection.fin is not a function :
+@(shell):1:1
+> db.mycollection.find({})
+{ "_id" : ObjectId("624bc02ecc8fc22df10a893e"), "name" : "vidya", "marks" : 90 }
+{ "_id" : ObjectId("624bc02ecc8fc22df10a893f"), "name" : "anvi", "marks" : 89 }
+{ "_id" : ObjectId("624bc02ecc8fc22df10a8940"), "name" : "arpi", "marks" : 95 }
+> db.mycollection.find.pretty()({})
+uncaught exception: TypeError: db.mycollection.find.pretty is not a function :
+@(shell):1:1
+> db.mycollection.find.pretty()
+uncaught exception: TypeError: db.mycollection.find.pretty is not a function :
+@(shell):1:1
+> db.mycollection.find().pretty()
+{
+	"_id" : ObjectId("624bc02ecc8fc22df10a893e"),
+	"name" : "vidya",
+	"marks" : 90
+}
+{
+	"_id" : ObjectId("624bc02ecc8fc22df10a893f"),
+	"name" : "anvi",
+	"marks" : 89
+}
+{
+	"_id" : ObjectId("624bc02ecc8fc22df10a8940"),
+	"name" : "arpi",
+	"marks" : 95
+}
+> db.mycollection.find(marks=90).pretty()
+uncaught exception: Error: don't know how to massage : number :
+DBCollection.prototype._massageObject@src/mongo/shell/collection.js:215:11
+DBCollection.prototype.find@src/mongo/shell/collection.js:223:30
+@(shell):1:1
+> db.mycollection.insertMany([{name:"kavya",marks:100,sem:6},])^C
+bye
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ mongo
+MongoDB shell version v5.0.5
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a1ec057a-4c87-4c5d-a3a3-bde0d6878971") }
+MongoDB server version: 5.0.5
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting: 
+        2022-04-05T08:51:30.937+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2022-04-05T08:51:33.044+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+IS_415      0.000GB
+admin       0.000GB
+config      0.000GB
+fardeen     0.000GB
+is_TEJU     0.000GB
+ise140      0.000GB
+local       0.000GB
+namana      0.000GB
+shwetha152  0.000GB
+sriya       0.000GB
+start       0.000GB
+> use shwetha152
+switched to db shwetha152
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> show collections
+mycollection
+shwetha152
+> db.mycollection.insertOne({name:"vidya",marks:90})
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("624bc24014c22ccabf3e23d1")
+}
+> db.mucollection.find()
+> db.mycollection.find()
+{ "_id" : ObjectId("624bc02ecc8fc22df10a893e"), "name" : "vidya", "marks" : 90 }
+{ "_id" : ObjectId("624bc02ecc8fc22df10a893f"), "name" : "anvi", "marks" : 89 }
+{ "_id" : ObjectId("624bc02ecc8fc22df10a8940"), "name" : "arpi", "marks" : 95 }
+{ "_id" : ObjectId("624bc24014c22ccabf3e23d1"), "name" : "vidya", "marks" : 90 }
+> 
+
